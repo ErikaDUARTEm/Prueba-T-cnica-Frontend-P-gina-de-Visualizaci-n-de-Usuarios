@@ -1,12 +1,24 @@
 // Hacemos la petición a la Api
-export const reqApi = async (url, section, tarjetas) => {
+let resultadosOriginales = []
+export const reqApi = async (url, section, tarjetas, buscador) => {
   try {
-    const api = await fetch(url)
-    const characterApi = await api.json()
-    console.log(characterApi.results)
-    characterApi.results.forEach((usuario) => {
-      section.insertAdjacentHTML('beforeend', tarjetas(usuario))
-    })
+    if (resultadosOriginales.length === 0) {
+      const api = await fetch(url)
+      const characterApi = await api.json()
+      resultadosOriginales = characterApi.results
+    }
+
+    resultadosOriginales.forEach((usuario) => section.insertAdjacentHTML('beforeend', tarjetas(usuario)))
+
+    const match = resultadosOriginales.filter(result => result.name.first.toLowerCase() === buscador.toLowerCase());
+
+    if (match.length > 0) {
+      console.log(match)
+      section.innerHTML = ''
+      match.forEach(usuario => section.insertAdjacentHTML('beforeend', tarjetas(usuario)))
+    } else {
+      console.log('No se encontraron resultados para el buscador.')
+    }
   } catch (error) {
     console.error('Ha ocurrido un error con la Api')
   }
