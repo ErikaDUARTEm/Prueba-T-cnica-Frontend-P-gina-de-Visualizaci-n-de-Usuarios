@@ -5,14 +5,20 @@ export const tarjetas = (usuario) => {
   const card = `
     <article class="card">
     <div class="card-imagen">
-      <img src="${usuario.picture.thumbnail}">
+      <img src="${usuario.picture.medium}">
     </div>
     <div class="card-body-title">
-      <p>${usuario.name.title}${usuario.name.first}${usuario.last}</p>
-      <p>${usuario.gender}</p>
-      <p>${fechaFormateada}</p>
-      <p>${usuario.location.city}</p>
-      <p>${usuario.email}</p>
+      <div>
+          <p>Nombre completo: <span class="contenido">${usuario.name.title}. ${usuario.name.first} ${usuario.name.last}</span></p>
+          <p>Edad: <span class="contenido">${usuario.dob.age}</span></p>
+          <p>Dirección: <span class="contenido">${usuario.location.city}</span></p>
+      </div>
+      <div>
+          <p>Género: <span class="contenido">${usuario.gender}</span></p>
+          <p>Fecha de nacimiento: <span class="contenido">${fechaFormateada}</span></p>
+         
+          <p>Email: <span class="contenido">${usuario.email}</span></p>
+      </div>      
     </div>
     </article>`
   return (card)
