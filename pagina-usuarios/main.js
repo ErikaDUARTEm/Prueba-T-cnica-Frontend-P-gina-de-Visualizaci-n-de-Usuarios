@@ -1,24 +1,29 @@
 import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '../../../../../../vite.svg'
-import { setupCounter } from './counter.js'
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
+const app = document.querySelector('#app')
+const sectionLista = document.createElement('section')
+app.appendChild(sectionLista)
+
+const tarjetas = (usuario) => {
+  const card = `
+  <article class="card">
+  <div class="card-imagen">
+    <img src="${usuario.picture.thumbnail}">
   </div>
-`
+  <div class="card-body-title">
+    <p>${usuario.name.title}${usuario.name.first}${usuario.last}</p>
+  </div>
+  </article>`
+  return (card)
+}
 
-setupCounter(document.querySelector('#counter'))
+const reqApi = async() => {
+  const api = await fetch('https://randomuser.me/api/?results=100')
+  const characterApi = await api.json()
+  console.log(characterApi.results)
+  characterApi.results.forEach((usuario)=>{
+     app.insertAdjacentHTML("beforeend", tarjetas(usuario))
+  });
+}
+
+reqApi()
