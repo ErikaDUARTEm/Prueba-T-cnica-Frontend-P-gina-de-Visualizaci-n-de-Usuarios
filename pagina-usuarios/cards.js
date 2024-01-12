@@ -6,6 +6,7 @@ export const tarjetas = (usuario) => {
     <article class="card">
     <div class="card-imagen">
       <img src="${usuario.picture.medium}">
+      <button class="btnCerrar btnOculto">x</button>
     </div>
     <div class="card-body-title">
       <div>

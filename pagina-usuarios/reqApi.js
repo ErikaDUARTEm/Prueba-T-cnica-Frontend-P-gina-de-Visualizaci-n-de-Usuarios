@@ -1,5 +1,11 @@
 // Hacemos la petición a la Api
 let resultadosOriginales = []
+
+function recargarPagina () {
+  setTimeout(function () {
+    window.location.reload()
+  }, 5000)
+}
 export const reqApi = async (url, section, tarjetas, buscador) => {
   try {
     if (resultadosOriginales.length === 0) {
@@ -13,11 +19,14 @@ export const reqApi = async (url, section, tarjetas, buscador) => {
     const match = resultadosOriginales.filter(result => result.name.first.toLowerCase() === buscador.toLowerCase());
 
     if (match.length > 0) {
-      console.log(match)
       section.innerHTML = ''
       match.forEach(usuario => section.insertAdjacentHTML('beforeend', tarjetas(usuario)))
+      const btnCerrarList = document.querySelectorAll('.btnCerrar');
+      btnCerrarList.forEach(btnCerrar => btnCerrar.classList.remove('btnOculto'));
     } else {
-      console.log('No se encontraron resultados para el buscador.')
+      section.innerHTML = ''
+      section.innerHTML = `<h2>No se encontraron resultados para el buscador.</h2>`
+      recargarPagina()
     }
   } catch (error) {
     console.error('Ha ocurrido un error con la Api')

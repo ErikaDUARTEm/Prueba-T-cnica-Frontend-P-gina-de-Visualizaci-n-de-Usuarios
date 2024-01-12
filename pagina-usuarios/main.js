@@ -48,6 +48,8 @@ window.addEventListener('load', function (event) {
   }
 })
 button.addEventListener('click', () => {
-  console.log('click dentro del botton')
+  if (buscador.value.includes(' ')) {
+    buscador.value = buscador.value.replace(/\s/g, '')
+  }
   reqApi(URL, section, tarjetas, buscador.value)
 })
