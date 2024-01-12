@@ -16,10 +16,12 @@ export const tarjetas = (usuario) => {
       <div>
           <p>Género: <span class="contenido">${usuario.gender}</span></p>
           <p>Fecha de nacimiento: <span class="contenido">${fechaFormateada}</span></p>
-         
           <p>Email: <span class="contenido">${usuario.email}</span></p>
-      </div>      
+      </div>
     </div>
+    <div class="container-btnInfo">
+          <button class="btnInfo">+</button>
+    </div>      
     </article>`
   return (card)
 }

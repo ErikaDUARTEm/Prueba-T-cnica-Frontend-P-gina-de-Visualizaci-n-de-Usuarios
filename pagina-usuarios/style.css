@@ -49,6 +49,10 @@ header{
   height: 30%;
   border-radius: 0 20px 20px 0;
   background: linear-gradient(#2dd4c7, #0d948a);
+  color:#f0fdfc;
+}
+.buttonSearch:hover{
+  cursor: pointer;
 }
 .sectionListado {
   width: 100%;
@@ -64,9 +68,10 @@ header{
 
 .card {
   padding: 1em;
+  box-sizing: border-box;
   background: linear-gradient(#2dd4c7,#115e58);
   width: 35vw;
-  height: 42vh;
+  height: 50vh;
   border-radius: 3px;
   display: flex;
   flex-direction: column;
@@ -98,4 +103,25 @@ p{
   flex-direction: column;
   flex-wrap: nowrap;
   gap: 12px;
+}
+.container-btnInfo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.btnInfo{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    color:#0f766e;
+    font-size: 20px;
+    border-bottom:2px #0f766e;
+    background-color:#f0fdfc;
+}
+.btnInfo:hover{
+  background-color: #ccfbf7;
+  color:#0f766e;
+  border-bottom: #0f766e;
+  cursor: pointer;
 }
