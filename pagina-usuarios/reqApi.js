@@ -1,9 +1,9 @@
 // Hacemos la petición a la Api
 let resultadosOriginales = []
 
-function recargarPagina () {
+export function redireccionarPagina () {
   setTimeout(function () {
-    window.location.reload()
+    window.location.href = '/'
   }, 5000)
 }
 export const reqApi = async (url, section, tarjetas, buscador) => {
@@ -21,12 +21,15 @@ export const reqApi = async (url, section, tarjetas, buscador) => {
     if (match.length > 0) {
       section.innerHTML = ''
       match.forEach(usuario => section.insertAdjacentHTML('beforeend', tarjetas(usuario)))
-      const btnCerrarList = document.querySelectorAll('.btnCerrar');
-      btnCerrarList.forEach(btnCerrar => btnCerrar.classList.remove('btnOculto'));
+      setTimeout(() => {
+        const btnCerrarList = document.querySelectorAll('.btnCerrar')
+        btnCerrarList.forEach(btnCerrar => btnCerrar.classList.remove('btnOculto'))
+        btnCerrarList.forEach((btn) => redireccionarPagina())
+      }, 0)
     } else {
       section.innerHTML = ''
       section.innerHTML = `<h2>No se encontraron resultados para el buscador.</h2>`
-      recargarPagina()
+      redireccionarPagina()
     }
   } catch (error) {
     console.error('Ha ocurrido un error con la Api')

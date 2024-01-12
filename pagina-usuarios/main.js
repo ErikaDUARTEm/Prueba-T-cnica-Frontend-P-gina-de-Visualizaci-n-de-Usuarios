@@ -40,13 +40,13 @@ sectionLista.classList.add('sectionListado')
 app.appendChild(sectionLista)
 
 const section = document.querySelector('.sectionListado')
-console.log(buscador.value)
 
 window.addEventListener('load', function (event) {
   if (event) {
     reqApi(URL, section, tarjetas, buscador)
   }
 })
+// evento del boton buscar
 button.addEventListener('click', () => {
   if (buscador.value.includes(' ')) {
     buscador.value = buscador.value.replace(/\s/g, '')
