@@ -51,5 +51,5 @@ button.addEventListener('click', () => {
   if (buscador.value.includes(' ')) {
     buscador.value = buscador.value.replace(/\s/g, '')
   }
-  reqApi(URL, section, tarjetas, buscador.value)
+  reqApi(URL, section, tarjetas, buscador)
 })
