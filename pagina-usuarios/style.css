@@ -147,3 +147,45 @@ p{
 .btnOculto{
   display: none;
 }
+
+.modal {
+  position: fixed;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  height: 70%;
+  background-color:#115e55;
+  opacity: 0.9;
+  box-shadow: 1px 2px 10px #042f2c;
+  border-radius: 20px 20px 20px 20px;
+  font-size: 25px;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.open{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.close{
+  display: none;
+  
+}
+
+.modal-body-title{
+  display: flex;
+  flex-direction: column;
+}
+.modal-imagen img{
+  border-radius: 50%;
+  border: 5px solid #99f6ef;
+  align-self: center; 
+  margin-bottom: auto; 
+}

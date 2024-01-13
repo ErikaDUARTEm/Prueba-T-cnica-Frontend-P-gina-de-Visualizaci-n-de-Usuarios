@@ -1,4 +1,4 @@
-export const tarjetas = (usuario) => {
+export const tarjetas = (usuario, dataset) => {
   const fecha = new Date(usuario.dob.date)
   const options = { year: 'numeric', month: 'long', day: 'numeric' }
   const fechaFormateada = fecha.toLocaleDateString('es-ES', options)
@@ -21,7 +21,7 @@ export const tarjetas = (usuario) => {
       </div>
     </div>
     <div class="container-btnInfo">
-          <button class="btnInfo">+</button>
+          <button class="btnInfo" data-id="${dataset}">+</button>
     </div>      
     </article>`
   return (card)

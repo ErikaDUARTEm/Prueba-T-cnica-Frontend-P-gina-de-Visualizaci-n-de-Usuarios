@@ -1,3 +1,5 @@
+import { modal } from './modal'
+
 // Hacemos la petición a la Api
 let resultadosOriginales = []
 
@@ -6,14 +8,28 @@ export function redireccionarPagina (time) {
     window.location.href = '/'
   }, time)
 }
-export const reqApi = async (url, section, tarjetas, buscador) => {
+export const reqApi = async (url, section, tarjetas, buscador, contenedorModal) => {
   try {
     if (resultadosOriginales.length === 0) {
       const api = await fetch(url)
       const characterApi = await api.json()
       resultadosOriginales = characterApi.results
     }
-    resultadosOriginales.forEach((usuario) => section.insertAdjacentHTML('beforeend', tarjetas(usuario)))
+    console.log(resultadosOriginales)
+    resultadosOriginales.forEach((usuario, index) => {
+      section.insertAdjacentHTML('beforeend', tarjetas(usuario, index + 1))
+    })
+    const btnInfoList = section.querySelectorAll('.btnInfo')
+    btnInfoList.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const usuario = resultadosOriginales[parseInt(btn.dataset.id) - 1]
+        contenedorModal.innerHTML = modal(usuario)
+        const modals = document.querySelector('.modal')
+        modals.classList.remove('close')
+        modals.classList.add('open')
+      })
+    })
+
     const valorInput = buscador.value.toLowerCase()
     if (valorInput !== null && valorInput !== undefined && valorInput.trim() !== '') {
       const match = resultadosOriginales.filter(result => result.name.first.toLowerCase() === valorInput)
@@ -33,6 +49,6 @@ export const reqApi = async (url, section, tarjetas, buscador) => {
       }
     }
   } catch (error) {
-    console.error('Ha ocurrido un error con la Api')
+    console.error(`Ha ocurrido un error con la Api ${error}`)
   }
 }
