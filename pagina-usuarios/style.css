@@ -53,6 +53,7 @@ header{
 }
 .buttonSearch:hover{
   cursor: pointer;
+  background: linear-gradient(#14b89e, #0f7669);
 }
 .sectionListado {
   width: 100%;
@@ -80,12 +81,18 @@ header{
   box-shadow: 1px 1px 10px #ccfbf7;
 }
 .card-imagen{
+  width:100%;
+  position: relative;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: flex-end;
+
 }
 .card-imagen img{
   border-radius: 50%;
   border: 5px solid #99f6ef;
+  align-self: center; 
+  margin-bottom: auto; 
 }
 p{
   color: #99f6ef;
@@ -115,13 +122,28 @@ p{
     height: 50px;
     border-radius: 50%;
     color:#0f766e;
-    font-size: 20px;
-    border-bottom:2px #0f766e;
+    font-size: 20px;    
     background-color:#f0fdfc;
+    box-shadow: 1px 2px 10px #ccfbf7;
 }
 .btnInfo:hover{
   background-color: #ccfbf7;
-  color:#0f766e;
-  border-bottom: #0f766e;
   cursor: pointer;
+}
+
+.btnCerrar{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  font-weight:bold;
+  border-radius: 50%;
+  color:#0f766e;
+  font-size: 20px;    
+  background-color:#f0fdfc;
+  box-shadow: 1px 2px 10px #ccfbf7;
+}
+.btnOculto{
+  display: none;
 }
