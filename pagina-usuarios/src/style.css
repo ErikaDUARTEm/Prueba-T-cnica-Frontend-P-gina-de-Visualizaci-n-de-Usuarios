@@ -171,18 +171,16 @@ p{
   opacity: 0.9;
   box-shadow: 1px 2px 10px #042f2c;
   border-radius: 20px 20px 20px 20px;
-  font-size: 25px;
+  font-size: 20px;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
   
 }
 
 .open{
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  flex-wrap: wrap;
-  flex-direction: column;
 }
 
 .close{
@@ -208,10 +206,9 @@ p{
  
   justify-content: center;
   align-items: center;
-  z-index: 1000; /* Z-index alto para superponer sobre el contenido */
+  z-index: 1000;
 }
 
-/* HTML: <div class="loader"></div> */
 .loader {
   width: 40px;
   aspect-ratio: 1;
@@ -233,4 +230,9 @@ p{
     0%,12.5%    {transform:rotate(var(--s,0deg)) rotate(0deg)}
     37.5%,62.5% {transform:rotate(var(--s,0deg)) rotate(-180deg)}
     87.5%,100%  {transform:rotate(var(--s,0deg)) rotate(-360deg)}
+}
+.cita{
+  padding: 20px;
+  font-style: italic;
+  font-size: 16px;
 }

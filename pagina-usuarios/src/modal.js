@@ -1,11 +1,9 @@
-import { citaAleatoria } from './citaAleatoria'
 export const modal = (usuario) => {
   const fecha = new Date(usuario.dob.date)
   const options = { year: 'numeric', month: 'long', day: 'numeric' }
   const fechaFormateada = fecha.toLocaleDateString('es-ES', options)
   const modal = `
     <article class="modal close">
-    
         <div class="modal-imagen">
             <img src="${usuario.picture.thumbnail}">
             <button class="btnCerrar">x</button>
@@ -26,13 +24,15 @@ export const modal = (usuario) => {
                 <p>Username: <span class="contenido">${usuario.login.username}</span></p>
                 <p>Phone: <span class="contenido">${usuario.phone}</span></p>
             </div>
-            <span>${citaAleatoria()}</span>
-            <span style="z-index:50;font-size:0.9em; font-weight: bold;">
-                <img src="https://theysaidso.com/branding/theysaidso.png" height="20" width="20" alt="theysaidso.com"/>
-                <a href="https://theysaidso.com" title="Powered by quotes from theysaidso.com" style="color: #ccc; margin-left: 4px; vertical-align: middle;">
-        They Said So®</a>
-            </span>
         </div> 
+        <div class="cita"> 
+            <span>${'Aquí debe ir la cita y el autor pero tuve problemas para acceder al Api por CORS'}</span>
+            <span style="z-index:50;font-size:0.9em; font-weight: bold;">
+            <img src="https://theysaidso.com/branding/theysaidso.png" height="20" width="20" alt="theysaidso.com"/>
+            <a href="https://theysaidso.com" title="Powered by quotes from theysaidso.com" style="color: #ccc; margin-left: 4px; vertical-align: middle;">
+    They Said So®</a>
+            </span>
+        </div>
        
 </article>`
   return modal

@@ -11,7 +11,6 @@ export const citaAleatoria = async () => {
     })
 
     const resul = await cita.json()
-    console.log(resul)
     return resul
   } catch (error) {
     console.error('Error al obtener la cita aleatoria:', error)
