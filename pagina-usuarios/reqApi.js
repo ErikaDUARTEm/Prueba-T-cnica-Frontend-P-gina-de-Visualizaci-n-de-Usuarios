@@ -15,7 +15,7 @@ export const reqApi = async (url, section, tarjetas, buscador, contenedorModal) 
       const characterApi = await api.json()
       resultadosOriginales = characterApi.results
     }
-    console.log(resultadosOriginales)
+
     resultadosOriginales.forEach((usuario, index) => {
       section.insertAdjacentHTML('beforeend', tarjetas(usuario, index + 1))
     })
@@ -27,6 +27,12 @@ export const reqApi = async (url, section, tarjetas, buscador, contenedorModal) 
         const modals = document.querySelector('.modal')
         modals.classList.remove('close')
         modals.classList.add('open')
+        if (modal) {
+          const cerrarModal = document.querySelectorAll('.btnCerrar')
+          cerrarModal.forEach((btn) => btn.addEventListener('click', () => {
+            redireccionarPagina(0)
+          }))
+        }
       })
     })
 
@@ -37,7 +43,7 @@ export const reqApi = async (url, section, tarjetas, buscador, contenedorModal) 
         section.innerHTML = ''
         match.forEach(usuario => section.insertAdjacentHTML('beforeend', tarjetas(usuario)))
         const btnCerrarList = document.querySelectorAll('.btnCerrar')
-        btnCerrarList.forEach(btnCerrar => btnCerrar.classList.remove('btnOculto'))
+        btnCerrarList.forEach(btnCerrar => btnCerrar.classList.toggle('btnOculto'))
         btnCerrarList.forEach((btn) => btn.addEventListener('click', () => {
           redireccionarPagina(0)
         }))
