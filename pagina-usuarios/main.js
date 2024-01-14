@@ -1,6 +1,7 @@
 import './style.css'
 import { tarjetas } from './cards'
 import { reqApi } from './reqApi'
+import { citaAleatoria } from './citaAleatoria'
 // Capturamos en elemento del Dom donde vamos a renderizar nuestros usuarios
 const app = document.querySelector('#app')
 const URL = 'https://randomuser.me/api/?results=200'
@@ -58,3 +59,4 @@ button.addEventListener('click', () => {
   }
   reqApi(URL, section, tarjetas, buscador, contenedorModal)
 })
+citaAleatoria()

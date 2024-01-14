@@ -19,6 +19,7 @@ export const reqApi = async (url, section, tarjetas, buscador, contenedorModal) 
     resultadosOriginales.forEach((usuario, index) => {
       section.insertAdjacentHTML('beforeend', tarjetas(usuario, index + 1))
     })
+    // Botón + para abrir el modal
     const btnInfoList = section.querySelectorAll('.btnInfo')
     btnInfoList.forEach((btn) => {
       btn.addEventListener('click', () => {
@@ -44,6 +45,8 @@ export const reqApi = async (url, section, tarjetas, buscador, contenedorModal) 
         match.forEach(usuario => section.insertAdjacentHTML('beforeend', tarjetas(usuario)))
         const btnCerrarList = document.querySelectorAll('.btnCerrar')
         btnCerrarList.forEach(btnCerrar => btnCerrar.classList.toggle('btnOculto'))
+        const containerBton = document.querySelectorAll('.container-btnInfo')
+        containerBton.forEach(( btnInf ) => btnInf.classList.add('btnOculto'))
         btnCerrarList.forEach((btn) => btn.addEventListener('click', () => {
           redireccionarPagina(0)
         }))
