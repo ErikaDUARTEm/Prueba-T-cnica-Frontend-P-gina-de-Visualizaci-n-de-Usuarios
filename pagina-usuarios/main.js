@@ -32,24 +32,29 @@ header.appendChild(contenedor)
 
 app.appendChild(header)
 
+
 const buscador = document.querySelector('.input')
 const button = document.querySelector('.buttonSearch')
 // Section donde va el listado de usuarios
 const sectionLista = document.createElement('section')
 sectionLista.classList.add('sectionListado')
 app.appendChild(sectionLista)
-
+// Section que mostrara el modal
+const contenedorModal = document.createElement('section')
+contenedorModal.classList.add('modal-content')
+app.appendChild(contenedorModal)
 const section = document.querySelector('.sectionListado')
 
 window.addEventListener('load', function (event) {
   if (event) {
-    reqApi(URL, section, tarjetas, buscador)
+    reqApi(URL, section, tarjetas, buscador, contenedorModal)
   }
 })
+
 // evento del boton buscar
 button.addEventListener('click', () => {
   if (buscador.value.includes(' ')) {
     buscador.value = buscador.value.replace(/\s/g, '')
   }
-  reqApi(URL, section, tarjetas, buscador.value)
+  reqApi(URL, section, tarjetas, buscador, contenedorModal)
 })
