@@ -1,11 +1,16 @@
 import './style.css'
 import { tarjetas } from './cards'
 import { reqApi } from './reqApi'
-import { citaAleatoria } from './citaAleatoria'
+
 // Capturamos en elemento del Dom donde vamos a renderizar nuestros usuarios
 const app = document.querySelector('#app')
 const URL = 'https://randomuser.me/api/?results=200'
-
+// Se crea y agrega al dom el elemento que contendrá el loader
+const loaderContainer = document.createElement('div')
+loaderContainer.classList.add('loader-container')
+const loader = document.createElement('div')
+loader.classList.add('loader')
+loaderContainer.appendChild(loader)
 // header con buscador
 const header = document.createElement('header')
 const contenedor = document.createElement('div')
@@ -30,12 +35,12 @@ label.appendChild(input)
 label.appendChild(buttonSearch)
 contenedor.appendChild(label)
 header.appendChild(contenedor)
-
 app.appendChild(header)
-
 
 const buscador = document.querySelector('.input')
 const button = document.querySelector('.buttonSearch')
+
+app.appendChild(loaderContainer)
 // Section donde va el listado de usuarios
 const sectionLista = document.createElement('section')
 sectionLista.classList.add('sectionListado')
@@ -46,6 +51,7 @@ contenedorModal.classList.add('modal-content')
 app.appendChild(contenedorModal)
 const section = document.querySelector('.sectionListado')
 
+// Evento que escucha cuando la página termina de cargar todos los elementos
 window.addEventListener('load', function (event) {
   if (event) {
     reqApi(URL, section, tarjetas, buscador, contenedorModal)
@@ -59,4 +65,3 @@ button.addEventListener('click', () => {
   }
   reqApi(URL, section, tarjetas, buscador, contenedorModal)
 })
-citaAleatoria()
