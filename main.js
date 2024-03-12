@@ -1,6 +1,6 @@
 import './style.css'
 import { tarjetas } from './cards'
-import { reqApi } from './reqApi'
+import { reqApi } from './docs/reqApi'
 
 // Capturamos en elemento del Dom donde vamos a renderizar nuestros usuarios
 const app = document.querySelector('#app')
